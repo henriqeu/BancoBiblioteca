@@ -1,0 +1,105 @@
+
+
+Atividade 12/05/22 
+Referente ao exercício Biblioteca, apresentado na aula de banco de dados do dia 02/05. 
+6 - Crie o comando SQL para inserção dos referidos dados em todas as tabelas. 
+7 - Crie uma consulta para relacionar todos os dados disponíveis de todos os livros existentes na biblioteca em ordem alfabética de título 
+
+
+
+CREATE DATABASE BIBLIOTECA;
+CREATE TABLE [Editora] (
+[id] int not null PRIMARY KEY identify(1,1),
+[nome] varchar(50),
+);
+
+CREATE TABLE [Categoria] (
+[id] int not null PRIMARY KEY identify(1,1),
+[tipo_categoria] varchar(50),
+);
+
+CREATE TABLE [Livro] (
+[ISBN] varchar(50) not null,
+[título] varchar(100) not null,
+[ano] int not null,
+[fk_editora] int not null,
+[fk_categoria] int not null,
+PRIMARY KEY ([ISBN]),
+CONSTRAINT [FK_Livro.fk_editora]
+FOREIGN KEY ([fk_editora])
+REFERENCES [Editora]([id]),
+CONSTRAINT [FK_Livro.fk_categoria]
+FOREIGN KEY ([fk_categoria])
+REFERENCES [Categoria]([id])
+);
+
+CREATE TABLE [Autor] (
+[id] int not null PRIMARY KEY identify(1,1),
+[nome] varchar(100) not null,
+[nacionalidade] varchar(100)
+);
+
+CREATE TABLE [LivroAutor] (
+[id] int not null PRIMARY KEY identify(1,1),
+[fk_autor] int not null,
+[fk_livro] varchar(50) not null,
+CONSTRAINT [FK_LivroAutor.fk_autor]
+FOREIGN KEY ([fk_autor])
+REFERENCES [Autor]([id]),
+CONSTRAINT [FK_LivroAutor.fk_livro]
+FOREIGN KEY ([fk_livro])
+REFERENCES [Livro]([ISBN])
+);
+
+CREATE TABLE [Editora] (
+[id] int not null identify,
+[nome] varchar(50),
+PRIMARY KEY ([id])
+);
+
+CREATE TABLE [Categoria] (
+[id] int not null identify,
+[tipo_categoria] varchar(50),
+PRIMARY KEY ([id])
+);
+
+CREATE INDEX [KEY] ON [Categoria] ([tipo_categoria]);
+
+CREATE TABLE [Livro] (
+[ISBN] varchar(50) not null,
+[título] varchar(100) not null,
+[ano] int not null
+,
+[fk_editora] int not null
+,
+[fk_categoria] int not null
+,
+PRIMARY KEY ([ISBN]),
+CONSTRAINT [FK_Livro.fk_editora]
+FOREIGN KEY ([fk_editora])
+REFERENCES [Editora]([id]),
+CONSTRAINT [FK_Livro.fk_categoria]
+FOREIGN KEY ([fk_categoria])
+REFERENCES [Categoria]([id])
+);
+
+
+CREATE TABLE [Autor] (
+[id] int not null identify,
+[nome] varchar(100) not null,
+[nacionalidade] varchar(100),
+PRIMARY KEY ([id])
+);
+
+CREATE TABLE [LivroAutor] (
+[id] int not null identify,
+[fk_autor] int not null,
+[fk_livro] varchar(50) not null,
+PRIMARY KEY ([id]),
+CONSTRAINT [FK_LivroAutor.fk_autor]
+FOREIGN KEY ([fk_autor])
+REFERENCES [Autor]([id]),
+CONSTRAINT [FK_LivroAutor.fk_livro]
+FOREIGN KEY ([fk_livro])
+REFERENCES [Livro]([ISBN])
+);

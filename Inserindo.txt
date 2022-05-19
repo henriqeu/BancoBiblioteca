@@ -1,0 +1,21 @@
+
+Sequencias para inserrts
+
+////////// Autor :
+INSERT INTO `autor` (`id`, `nome`, `nacionalidade`) VALUES (NULL, 'Luan', 'Brasileiro');
+INSERT INTO `autor` (`nome`, `nacionalidade`) VALUES ('Luan', 'Brasileiro');
+
+///////// Editora   
+INSERT INTO `editora` (`id`, `nome`) VALUES ('1', 'Editora');
+
+*//////Categoria
+INSERT INTO `categoria` (`id`, `tipo_categoria`) VALUES (NULL, 'Terror');
+INSERT INTO `categoria` (`tipo_categoria`) VALUES ('Terror');
+
+//////// Livros
+INSERT INTO `livro` (`ISBN`, `titulo`, `ano`, `fk_editora`, `fk_categoria`) 
+VALUES ('1', 'Senhor Dos Aneis', '2022', '1', '1');
+
+/////// Livro autor
+INSERT INTO `livroautor` (`int`, `fk_autor`, `fk_livro`) VALUES (NULL, '1', '1');
+

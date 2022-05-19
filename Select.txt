@@ -1,0 +1,1 @@
+SELECT ISBN, titulo, ano, fk_editora, nome, nacionalidade, tipo_categoria from livro, categoria, autor
